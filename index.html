@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sikretong malupit</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Courgette&family=Elsie:wght@400;900&family=Spicy+Rice&display=swap");
+      body {
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-family: "Courgette", serif;
+        background-color: #cb9df0;
+        overflow: hidden;
+      }
+      .form-container {
+        background-color: #9b7ebd;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 1;
+      }
+      .form-container input[type="password"],
+      .form-container input[type="submit"] {
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #fff9bf;
+        border-radius: 4px;
+      }
+      .form-container input[type="submit"] {
+        background-color: #3b1e54;
+        color: #fff9bf;
+        border: none;
+        cursor: pointer;
+      }
+      .form-container input[type="submit"]:hover {
+        background-color: #7e60bf;
+      }
+      .snowflake {
+        position: absolute;
+        top: -10%;
+        width: 50px;
+        height: 50px;
+        background-image: url("kuromi.gif");
+        background-size: cover;
+        opacity: 0.8;
+        animation: fall linear infinite;
+      }
+      @keyframes fall {
+        to {
+          transform: translateY(110vh);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+      <center>
+        <h2 style="text-transform: capitalize">
+          Input Our Special Day Date!!!
+        </h2>
+      </center>
+      <h3 style="text-transform: uppercase">
+        Clue: This is the time we first met and became officially (MMDDYY)
+      </h3>
+      <form onsubmit="return validateInput(event)">
+        <input
+          type="password"
+          placeholder="type here ...  "
+          id="name"
+          name="name"
+          required
+        />
+        <input type="submit" value="Continue" />
+      </form>
+    </div>
+
+    <script>
+      function validateInput(event) {
+        event.preventDefault(); // Prevent form submission
+
+        let input = document.getElementById("name").value;
+
+        if (input === "122124") {
+          window.location.href = "gallery.html";
+        } else {
+          alert("Wrong input! Please try again.");
+        }
+      }
+
+      function createSnowflake() {
+        const snowflake = document.createElement("div");
+        snowflake.classList.add("snowflake");
+        snowflake.style.left = Math.random() * 100 + "vw";
+        snowflake.style.animationDuration = Math.random() * 3 + 2 + "s";
+        document.body.appendChild(snowflake);
+        setTimeout(() => {
+          snowflake.remove();
+        }, 5000);
+      }
+      setInterval(createSnowflake, 200);
+    </script>
+  </body>
+</html>

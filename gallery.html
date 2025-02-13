@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>hehehehe</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap");
+
+      body {
+        font-family: "Dancing Script", cursive;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #cb9df0;
+        text-align: center;
+        overflow: hidden;
+        position: relative;
+      }
+      h2,
+      p {
+        background: #a35c7a;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        padding: 10px;
+        max-width: 90%;
+      }
+      .gallery img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .buttons {
+        margin-top: 10px;
+        text-align: center;
+        position: relative;
+      }
+      .buttons button {
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 5px;
+      }
+      .btn-primary {
+        background-color: #3b1e54;
+        color: white;
+      }
+      .btn-primary:hover {
+        background-color: #7e60bf;
+      }
+      .btn-secondary {
+        background-color: #dc3535;
+        color: white;
+      }
+      .snowflake {
+        position: absolute;
+        top: -10%;
+        width: 30px;
+        height: 30px;
+        background-image: url("loving.gif");
+        background-size: cover;
+        opacity: 0.8;
+        animation: fall linear infinite;
+      }
+      @keyframes fall {
+        from {
+          transform: translateY(-10vh);
+        }
+        to {
+          transform: translateY(100vh);
+        }
+      }
+      @media (max-width: 600px) {
+        body {
+          overflow-y: auto;
+        }
+        .btn-secondary {
+          position: relative;
+          display: block;
+          margin: 10px auto 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <audio autoplay loop>
+      <source src="bg5.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+
+    <h2>Hello My Pretty Bebiiii >.<</h2>
+    <div class="gallery">
+      <img src="img1.jpg" alt="Image 1" />
+      <img src="img2.jpg" alt="Image 2" />
+      <img src="img4.jpg" alt="Image 4" />
+      <img src="img5.jpg" alt="Image 5" />
+      <img src="img7.jpg" alt="Image 7" />
+      <img src="img9.jpg" alt="Image 8" />
+    </div>
+    <p>Will you be my valentine?</p>
+    <div class="buttons">
+      <button class="btn-primary" id="yesButton">YESSSS, WHY NOT!?</button>
+      <button class="btn-secondary" id="secondaryButton">NOOOOO!</button>
+    </div>
+    <script>
+      function createSnowflake() {
+        const snowflake = document.createElement("div");
+        snowflake.classList.add("snowflake");
+        snowflake.style.left = Math.random() * 100 + "vw";
+        snowflake.style.animationDuration = Math.random() * 3 + 2 + "s";
+        document.body.appendChild(snowflake);
+        setTimeout(() => {
+          snowflake.remove();
+        }, 5000);
+      }
+      setInterval(createSnowflake, 200);
+
+      const phrases = [
+        "hala bakitt no?",
+        "yess monaa po yan",
+        "bebii?:<",
+        "luh bakittt ayaw?",
+        "pleasee please:<",
+      ];
+      let index = 0;
+      const secondaryButton = document.getElementById("secondaryButton");
+      const yesButton = document.getElementById("yesButton");
+
+      function enlargeYesButton() {
+        index = (index + 1) % phrases.length;
+        secondaryButton.textContent = phrases[index];
+
+        // Increase size of YES button
+        let currentSize = parseInt(window.getComputedStyle(yesButton).fontSize);
+        yesButton.style.fontSize = `${currentSize + 5}px`;
+        yesButton.style.padding = "15px 30px";
+      }
+
+      secondaryButton.addEventListener("click", enlargeYesButton);
+
+      yesButton.addEventListener("click", function () {
+        if (!this.clicked) {
+          this.clicked = true;
+          window.location.href = "message.html";
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Love Letter</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+        background-color: #cb9df0;
+        overflow: hidden;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+      }
+      .envelope-wrapper {
+        position: relative;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .letter {
+        display: none;
+        position: absolute;
+        top: -120px;
+        width: 250px;
+        max-height: 200px;
+        background: #fff;
+        border-radius: 10px;
+        padding: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow-y: auto;
+        text-align: center;
+      }
+      .flap .letter {
+        display: block;
+      }
+      .snowflake {
+        position: absolute;
+        top: -10%;
+        width: 50px;
+        height: 50px;
+        background-image: url("happy.gif");
+        background-size: cover;
+        opacity: 0.8;
+        animation: fall linear infinite;
+      }
+      @keyframes fall {
+        to {
+          transform: translateY(110vh);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <audio autoplay loop>
+      <source src="bg.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+    <div class="container">
+      <div class="envelope-wrapper">
+        <div class="envelope">
+          <div class="heart"></div>
+          <div class="letter">
+            <div class="text">
+              <strong>hiii bebiii,</strong>
+              <p>
+                una sa lahat gusto kong mag thankyouu sayo dahil nandyan ka
+                parati at thankyou sa pag intindi sakin palagi. pasensya kana sa
+                mga nagawa ko sayo before dahil don naging sad ikaw. mahal na
+                mahal po kita bebii, sa ngayon wala akong ibang gifts sayo pero
+                ginawa koto at sana nagustuhan mo kahit ito lang gift ko sayo
+                ngayong valentines hihi. magiingat ikaw always at lagi kang mag
+                pray at mag rest sa tuwing pagod ka. nandito lang ako palagi
+                bebi support kita palagi. proud rin ako sayo palagiii. lagi mong
+                tatandaan na mahal na mahal kita sobra. yun lang hihi sana
+                nagustuhan mopo to bebi. sa totoo hindi talaga rin ako magaling
+                mag express sa lsm pero sinubukan ko now hehehe. happy
+                valentines bebiiiii i love youuu so so somuchhh!!!.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const envelope = document.querySelector(".envelope-wrapper");
+      const letter = document.querySelector(".letter");
+
+      envelope.addEventListener("click", () => {
+        envelope.classList.toggle("flap");
+      });
+
+      function createSnowflake() {
+        const snowflake = document.createElement("div");
+        snowflake.classList.add("snowflake");
+        snowflake.style.left = Math.random() * 100 + "vw";
+        snowflake.style.animationDuration = Math.random() * 3 + 2 + "s";
+        snowflake.style.width = Math.random() * 40 + 20 + "px";
+        snowflake.style.height = snowflake.style.width;
+        snowflake.style.opacity = Math.random() * 0.5 + 0.5;
+        document.body.appendChild(snowflake);
+        setTimeout(() => {
+          snowflake.remove();
+        }, 5000);
+      }
+      setInterval(createSnowflake, 200);
+    </script>
+  </body>
+</html>
